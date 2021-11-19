@@ -6,7 +6,7 @@
 /*
  * This implementation of malloc is based on first-fit style.
  * meta_block is a struct to store the meta information about every chuck of memory being allocated.
- * A Singly-linked list is maintained with all the meta_blocks 
+ * A doubly-linked list is maintained with all the meta_blocks 
  * to maintain the space being allocated and deallocated
  * Size of meta_block is considered to be 12 (4 bytes for the variables free, size and next). 
  */
@@ -28,12 +28,18 @@ void* base = NULL;
  * size is used to store the size of the respective block.
  * The character array data gives the next address after the 
  * meta_block as the data variable is defined at last.
+ * The data variable is made as a character pointer assuming that the character takes 1 byte,
+ * and so it makes the pointer arithmetic simpler
+ * The next and prev pointers points to the block in the 
+ * doubly linked list present next and previous to the curr block.
  */
 struct meta_block
 {
     int free;
     size_t size;
     meta_ptr next;
+    meta_ptr prev;
+    void *ptr;
     char data[1];
 };
 
@@ -81,6 +87,7 @@ meta_ptr extend_heap(meta_ptr last, size_t size){
     old_break->size = size;
     old_break->free = 0;
     old_break->next = NULL;
+    old_break->prev = NULL;
     if(last){
         last->next = old_break;
     }
