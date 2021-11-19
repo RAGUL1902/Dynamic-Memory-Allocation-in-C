@@ -14,7 +14,7 @@
 #define META_BLOCK_SIZE 20
  
 /* The macro align4 is used to set the requested size to multiple of four greater than requested size */
-#define align4(x) (((((x) -1) > >2) < <2)+4)
+#define align4(x) (((((x) -1) >>2) <<2)+4)
 
 /* meta_ptr is a pointer of type meta_block, it is type defined for simplicity and to avoid confusion */
 typedef struct meta_block *meta_ptr;
