@@ -8,10 +8,10 @@
  * meta_block is a struct to store the meta information about every chuck of memory being allocated.
  * A doubly-linked list is maintained with all the meta_blocks 
  * to maintain the space being allocated and deallocated
- * Size of meta_block is considered to be 12 (4 bytes for the variables free, size and next). 
+ * Size of meta_block is considered to be 20 (4 bytes for each of the  variables). 
  */
 
-#define META_BLOCK_SIZE 12
+#define META_BLOCK_SIZE 20
  
 /* The macro align4 is used to set the requested size to multiple of four greater than requested size */
 #define align4(x) (((((x) -1) > >2) < <2)+4)
