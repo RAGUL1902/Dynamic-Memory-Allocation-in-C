@@ -1,7 +1,7 @@
 #include<sys/types.h>
 #include<unistd.h>
 #include<stdio.h>
-#include"malloc.h"
+#include"include/malloc.h"
 
 /*
  * This implementation of malloc is based on first-fit style.
