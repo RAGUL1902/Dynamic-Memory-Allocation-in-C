@@ -2,11 +2,12 @@
 #include<unistd.h>
 #include<stdio.h>
 #include"malloc.c"
+#include"include/free.h"
 
 
 /*
  * This file contains the implementaion of the function free()
- * For the deatails on few data structs such as meta_block and meta_ptr refer to the file malloc.c
+ * For the details on few data structs such as meta_block and meta_ptr refer to the file malloc.c
  */
 
 
