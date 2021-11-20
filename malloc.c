@@ -68,8 +68,13 @@ void split_space(meta_ptr block, size_t size){
     new_block->size = block->size - size - META_BLOCK_SIZE;
     new_block->next = block->next;
     new_block->free = 1;
+    new_block->ptr = new_block->data;
+    new_block->prev = block;
     block->next = new_block;
     block->size = size;
+    if(new_block->next){
+        new_block->next->prev = new_block;
+    }
 }
 
 /*
@@ -88,6 +93,7 @@ meta_ptr extend_heap(meta_ptr last, size_t size){
     old_break->free = 0;
     old_break->next = NULL;
     old_break->prev = NULL;
+    old_break->ptr = old_break->data;
     if(last){
         last->next = old_break;
     }
