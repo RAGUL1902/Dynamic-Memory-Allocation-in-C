@@ -8,6 +8,7 @@ Dynamic memory allocation is the process of assigning the memory space during ru
   * [Free.c](#freec)
   * [Calloc.c](#callocc)
   * [Realloc.c](#reallocc)
+  * [Main.c](#mainc)
 * [References](#references)
 
 ## Approach Explained
@@ -60,6 +61,13 @@ Dynamic memory allocation is the process of assigning the memory space during ru
 * If the next block is not free then new block is allocated using `malloc()`. 
 * The data is then copied from the old location to the new location using `copy_data()`.
 * The pointer to the new location is returned.
+
+### Main.c
+ * Testing code to test all the functions implemented.
+ * First two new variables are created and allocated space using `malloc()`.
+ * Then the first varaible is freed and `malloc()` is called again to show that space can be reused.
+ * Then `calloc()` is used to allocate an int array of size 5. Initially the values will be set to 0 by `calloc()`;
+ * Then the array is resized to size 10 using `realloc()`.
 
 P.S: Please go through the comments in the code for more techincal details on the functions.
 
